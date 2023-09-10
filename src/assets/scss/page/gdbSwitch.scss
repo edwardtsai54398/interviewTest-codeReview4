@@ -1,0 +1,84 @@
+
+.gdb-switch {
+  $self: &;
+
+  display: inline-flex;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+
+  &--spacing {
+    @extend %mb-xl;
+  }
+
+  &__inner {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    background-color: v-bind('style.disactiveColor');
+    border-radius: map-get($border-radius, m);
+  }
+
+  &__switch {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    color: v-bind('style.disactiveColor');
+    background-color: map-get($theme-colors, white);
+    border-radius: map-get($border-radius, circle);
+    transition: all 0.3s;
+    transform: translate(0, -50%);
+  }
+
+  &__icon {
+    @extend %icon-s;
+
+    &--spacing {
+      @extend %me-xs;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__label {
+    @extend %font-m-default-bold;
+    @extend %ms-s;
+
+    color: v-bind('style.labelColor');
+  }
+
+  &__description {
+    display: inline-flex;
+
+    @extend %ms-s;
+  }
+
+  &--checked {
+    #{$self}__inner {
+      background-color: v-bind('style.activeColor');
+    }
+
+    #{$self}__switch {
+      left: 27px;
+      color: v-bind('style.activeColor');
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+
+    #{$self}__inner,
+    #{$self}__label {
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+$theme-colors: (
+  gray-1: #333333,
+  gray-2: #666666,
+  gray-3: #999999,
+  gray-4: #CCCCCC,
+  gray-5: #E0E0E0,
+  red-1: rgb(190, 57, 57),
+  green-1: rgb(52, 167, 52)
+);
+
+$border-radius: (
+  xs: 8px,
+  s: 12px,
+  m: 16px,
+  l: 20px,
+  xl: 24px
+);
+
+$font-size: (
+  xs: 8px,
+  s: 12px,
+  m: 16px,
+  l: 20px,
+  xl: 24px
+);
+
+@each $key,$value in $font-size{
+    %font-#{$key}-default-regular{
+        font-size: $value;
+    }
+    %font-#{$key}-default-bold{
+        font-size: $value;
+        font-weight: 700;
+    }
+}
+$space: (
+  xs: 8px,
+  s: 12px,
+  m: 16px,
+  l: 20px,
+  xl: 24px
+);
+
+@each $key, $value in $space{
+    %px-#{$key}{
+        padding-left: $value;
+        padding-right: $value;
+    }
+    %py-#{$key}{
+        padding-top: $value;
+        padding-bottom: $value;
+    }
+    %mx-#{$key}{
+        margin-left: $value;
+        margin-right: $value;
+    }
+    %my-#{$key}{
+        margin-top: $value;
+        margin-bottom: $value;
+    }
+}
+
+$icon-size:(
+  xs: 8px,
+  s: 12px,
+  m: 16px,
+  l: 20px,
+  xl: 24px
+);
+@each $key, $value in $icon-size{
+  %icon-#{$key}{
+    font-size: $value;
+  }
+}
