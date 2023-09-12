@@ -1,74 +1,105 @@
 $theme-colors: (
-  gray-1: #333333,
-  gray-2: #666666,
-  gray-3: #999999,
-  gray-4: #CCCCCC,
-  gray-5: #E0E0E0,
-  red-1: rgb(190, 57, 57),
-  green-1: rgb(52, 167, 52)
+    gray-1: #333333,
+    gray-2: #666666,
+    gray-3: #999999,
+    gray-4: #cccccc,
+    gray-5: #e0e0e0,
+    red-1: rgb(190, 57, 57),
+    green-1: rgb(52, 167, 52),
+    white: #fff,
 );
-
+:root {
+    @each $key, $value in $theme-colors {
+        --#{$key}-color: #{$value};
+    }
+}
 $border-radius: (
-  xs: 8px,
-  s: 12px,
-  m: 16px,
-  l: 20px,
-  xl: 24px
+    xs: 8px,
+    s: 12px,
+    m: 16px,
+    l: 20px,
+    xl: 24px,
+    circle: 50%,
 );
 
 $font-size: (
-  xs: 8px,
-  s: 12px,
-  m: 16px,
-  l: 20px,
-  xl: 24px
+    xs: 8px,
+    s: 12px,
+    m: 16px,
+    l: 20px,
+    xl: 24px,
 );
 
-@each $key,$value in $font-size{
-    %font-#{$key}-default-regular{
+@each $key, $value in $font-size {
+    %font-#{$key}-default-regular {
         font-size: $value;
     }
-    %font-#{$key}-default-bold{
+    %font-#{$key}-default-bold {
         font-size: $value;
         font-weight: 700;
     }
 }
 $space: (
-  xs: 8px,
-  s: 12px,
-  m: 16px,
-  l: 20px,
-  xl: 24px
+    xs: 8px,
+    s: 12px,
+    m: 16px,
+    l: 20px,
+    xl: 24px,
 );
 
-@each $key, $value in $space{
-    %px-#{$key}{
+@each $key, $value in $space {
+    %px-#{$key} {
         padding-left: $value;
         padding-right: $value;
     }
-    %py-#{$key}{
+    %py-#{$key} {
         padding-top: $value;
         padding-bottom: $value;
     }
-    %mx-#{$key}{
+    %pt-#{$key} {
+        padding-top: $value;
+    }
+    %pb-#{$key} {
+        padding-bottom: $value;
+    }
+    %ps-#{$key} {
+        padding-left: $value;
+    }
+    %pe-#{$key} {
+        padding-right: $value;
+    }
+    %mx-#{$key} {
         margin-left: $value;
         margin-right: $value;
     }
-    %my-#{$key}{
+    %my-#{$key} {
         margin-top: $value;
         margin-bottom: $value;
     }
+    %mb-#{$key} {
+        margin-bottom: $value;
+    }
+    %mt-#{$key} {
+        margin-top: $value;
+    }
+    %ms-#{$key} {
+        margin-left: $value;
+        margin-right: $value;
+    }
+    %me-#{$key} {
+        margin-right: $value;
+    }
 }
 
-$icon-size:(
-  xs: 8px,
-  s: 12px,
-  m: 16px,
-  l: 20px,
-  xl: 24px
+$icon-size: (
+    xs: 8px,
+    s: 12px,
+    m: 16px,
+    l: 20px,
+    xl: 24px,
 );
-@each $key, $value in $icon-size{
-  %icon-#{$key}{
-    font-size: $value;
-  }
+@each $key, $value in $icon-size {
+    %icon-#{$key} {
+        font-size: $value;
+    }
 }

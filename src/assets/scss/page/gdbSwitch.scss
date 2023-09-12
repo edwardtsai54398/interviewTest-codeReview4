@@ -1,84 +1,87 @@
-
 .gdb-switch {
-  $self: &;
+    $self: &;
 
-  display: inline-flex;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-
-  &--spacing {
-    @extend %mb-xl;
-  }
-
-  &__inner {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 26px;
-    background-color: v-bind('style.disactiveColor');
-    border-radius: map-get($border-radius, m);
-  }
-
-  &__switch {
-    position: absolute;
-    top: 50%;
-    left: 3px;
-    z-index: 1;
-    width: 20px;
-    height: 20px;
-    color: v-bind('style.disactiveColor');
-    background-color: map-get($theme-colors, white);
-    border-radius: map-get($border-radius, circle);
-    transition: all 0.3s;
-    transform: translate(0, -50%);
-  }
-
-  &__icon {
-    @extend %icon-s;
+    display: inline-flex;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
 
     &--spacing {
-      @extend %me-xs;
-    }
-  }
-
-  &__right {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__label {
-    @extend %font-m-default-bold;
-    @extend %ms-s;
-
-    color: v-bind('style.labelColor');
-  }
-
-  &__description {
-    display: inline-flex;
-
-    @extend %ms-s;
-  }
-
-  &--checked {
-    #{$self}__inner {
-      background-color: v-bind('style.activeColor');
+        @extend %mb-xl;
     }
 
-    #{$self}__switch {
-      left: 27px;
-      color: v-bind('style.activeColor');
+    &__inner {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 26px;
+        background-color: v-bind("style.disactiveColor");
+        //發現v-bind編譯出來會是"var(--459a6e30-style\.activeColor)
+        //並且我在Devtool並沒有看到編譯後的css 變數
+        //再來，如果有編譯出--459a6e30-style\.activeColor 這個css變數
+        //那值會是什麼？var(--gary-3-color)?還是 #666666 ?
+        border-radius: map-get($border-radius, m);
     }
-  }
 
-  &--disabled {
-    cursor: not-allowed;
-
-    #{$self}__inner,
-    #{$self}__label {
-      opacity: 0.5;
+    &__switch {
+        position: absolute;
+        top: 50%;
+        left: 3px;
+        z-index: 1;
+        width: 20px;
+        height: 20px;
+        color: v-bind("style.disactiveColor");
+        background-color: map-get($theme-colors, white);
+        border-radius: map-get($border-radius, circle);
+        transition: all 0.3s;
+        transform: translate(0, -50%);
     }
-  }
+
+    &__icon {
+        @extend %icon-s;
+
+        &--spacing {
+            @extend %me-xs;
+        }
+    }
+
+    &__right {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__label {
+        @extend %font-m-default-bold;
+        @extend %ms-s;
+
+        color: v-bind("style.labelColor");
+    }
+
+    &__description {
+        display: inline-flex;
+
+        @extend %ms-s;
+    }
+
+    &--checked {
+        #{$self}__inner {
+            background-color: v-bind("style.activeColor");
+        }
+
+        #{$self}__switch {
+            left: 27px;
+            color: v-bind("style.activeColor");
+        }
+    }
+
+    &--disabled {
+        cursor: not-allowed;
+
+        #{$self}__inner,
+        #{$self}__label {
+            opacity: 0.5;
+        }
+    }
 }

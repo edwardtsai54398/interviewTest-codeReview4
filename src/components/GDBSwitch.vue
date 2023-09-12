@@ -1,5 +1,6 @@
 <script>
 import { isNumber, isString, isNull, isBoolean, isUndefined } from "lodash-es";
+import {defineComponent, computed} from 'vue'
 
 export default defineComponent({
     props: {
@@ -108,24 +109,26 @@ export default defineComponent({
         <div class="gdb-switch__inner">
             <div class="gdb-switch__switch">
                 <span class="gdb-switch__icon material-icons-outlined">
-                    {{ checked ? "done" : "close " }}
+                    <font-awesome-icon icon="fa-solid fa-check" v-show="checked"/>
+                    <font-awesome-icon icon="fa-solid fa-xmark" v-show="!checked"/>
                 </span>
             </div>
         </div>
         <div v-if="label || description" class="gdb-switch__right">
             <span v-if="label" class="gdb-switch__label" v-text="label" />
             <div v-if="description" class="gdb-switch__description">
-                <GDBDescription
+                <!-- <GDBDescription
                     :text-color="descriptionColor"
                     :icon-color="iconDescriptionColor"
                 >
                     {{ description }}
-                </GDBDescription>
+                </GDBDescription> -->
+                <!-- 不清楚這個元件的功用 -->
             </div>
         </div>
     </span>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/assets/scss/all.scss";
 </style>
